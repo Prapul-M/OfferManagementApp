@@ -1,32 +1,65 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Header() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
 
   return (
-    <header className="bg-blue-600 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold">OfferManagementApp</Link>
-        <div className="relative">
-          <button
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="flex items-center space-x-2"
-          >
-            <img
-              src="https://via.placeholder.com/40"
-              alt="Profile"
-              className="w-10 h-10 rounded-full"
-            />
-            <span>John Doe</span>
-          </button>
-          {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
-              <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</Link>
-              <Link to="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</Link>
-              <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
+    <header className="bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-3 md:justify-start md:space-x-10">
+          <div className="flex justify-start lg:w-0 lg:flex-1">
+            <Link to="/" className="flex-shrink-0">
+              <img className="h-8 w-auto" src="/path-to-your-logo.png" alt="Your Logo" />
+            </Link>
+          </div>
+          <nav className="hidden md:flex space-x-10">
+            {[
+              { name: 'Dashboard', path: '/' },
+              { name: 'Create Offer', path: '/create-offer' },
+              { name: 'Profile', path: '/profile' },
+              { name: 'Settings', path: '/settings' },
+            ].map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`text-base font-medium ${
+                  isActive(item.path)
+                    ? 'text-indigo-600'
+                    : 'text-gray-500 hover:text-gray-900'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+            <div className="ml-3 relative">
+              <div>
+                <button
+                  type="button"
+                  className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  id="user-menu-button"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  onClick={() => setShowProfileDropdown(!showProfileDropdown)}
+                >
+                  <span className="sr-only">Open user menu</span>
+                  <img className="h-8 w-8 rounded-full" src="https://example.com/placeholder-avatar.jpg" alt="" />
+                </button>
+              </div>
+              {showProfileDropdown && (
+                <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
+                  <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</Link>
+                  <Link to="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</Link>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </header>
