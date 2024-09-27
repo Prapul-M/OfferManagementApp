@@ -3,6 +3,10 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const offerRoutes = require('./routes/offerRoutes');
+const mongoose = require('mongoose');
+
+// Add this line before connecting to MongoDB
+mongoose.set('strictQuery', false);
 
 const app = express();
 
