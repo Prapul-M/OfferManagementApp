@@ -2,11 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 
-// Mock function for creating/updating an offer
+// Replace the saveOffer function with this:
 const saveOffer = async (offerData, isEditMode) => {
-  console.log(`${isEditMode ? 'Updating' : 'Creating'} offer:`, offerData);
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  return { success: true, message: `Offer ${isEditMode ? 'updated' : 'created'} successfully` };
+  const endpoint = 'http://localhost:5001/api/offers'; // Update this to match your server port
+  const method = isEditMode ? 'PUT' : 'POST';
+
+  try {
+    console.log('Sending offer data:', offerData); // Log the data being sent
+
+    const response = await fetch(endpoint, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(offerData),
+    });
+
+    console.log('Response status:', response.status); // Log the response status
+
+    const result = await response.json();
+    console.log('Response data:', result); // Log the response data
+
+    if (!response.ok) {
+      throw new Error(result.error || result.message || 'Failed to save offer');
+    }
+
+    return { success: true, message: result.message };
+  } catch (error) {
+    console.error('Error in saveOffer:', error);
+    return { success: false, message: error.message };
+  }
 };
 
 function CreateOffer() {
@@ -42,15 +67,20 @@ function CreateOffer() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Basic client-side validation
+      if (!offerData.name || !offerData.clientName) {
+        throw new Error('Offer name and client name are required');
+      }
+
       const result = await saveOffer(offerData, isEditMode);
       if (result.success) {
-        console.log(result.message);
+        alert(`Success: ${result.message}`);
         navigate('/');
       } else {
-        console.error('Error saving offer:', result.message);
+        alert(`Error: ${result.message}`);
       }
     } catch (error) {
-      console.error('Error saving offer:', error);
+      alert(`Error: ${error.message}`);
     }
   };
 
