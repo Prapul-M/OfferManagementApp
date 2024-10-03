@@ -31,6 +31,9 @@ app.use('/api/offers', offerRoutes);
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../client/build')));
 
+// Serve static files from the images directory
+app.use('/images', express.static(path.join(__dirname, '../client/src/images')));
+
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {

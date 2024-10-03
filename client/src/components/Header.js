@@ -13,7 +13,7 @@ function Header() {
         <div className="flex justify-between items-center py-3 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link to="/" className="flex-shrink-0">
-              <img className="h-8 w-auto" src="/path-to-your-logo.png" alt="Your Logo" />
+              <img className="h-8 w-auto" src="/OfferManagementApp/client/src/images/Amazon.png" alt="Your Logo" />
             </Link>
           </div>
           <nav className="hidden md:flex space-x-10">

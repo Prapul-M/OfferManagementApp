@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 
+// Add this import at the top of the file
+import { getClientLogo } from '../utils/logoHelper';
+
 function Dashboard() {
   // Mock data for demonstration
   const offers = [
@@ -29,6 +32,11 @@ function Dashboard() {
   const handleEditOffer = (offer) => {
     // Navigate to the Create Offer page with offer details as state
     navigate('/create-offer', { state: { editMode: true, offerDetails: offer } });
+  };
+
+  const handleImageError = (e, clientName) => {
+    console.error(`Failed to load image for ${clientName}`);
+    e.target.src = '/OfferManagementApp/client/src/images/SunRun.png'; // Set a default logo
   };
 
   return (
@@ -127,7 +135,12 @@ function Dashboard() {
                 <div className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mr-4">
-                      <span className="text-gray-600 font-bold text-xl">{offer.clientName.charAt(0)}</span>
+                      <img
+                        src={getClientLogo(offer.clientName)}
+                        alt={`${offer.clientName} logo`}
+                        className="w-10 h-10 object-contain"
+                        onError={(e) => handleImageError(e, offer.clientName)}
+                      />
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg text-gray-800">{offer.name}</h3>
