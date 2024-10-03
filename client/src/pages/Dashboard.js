@@ -121,7 +121,7 @@ function Dashboard() {
               { id: 13, name: 'Tide Pods Free Trial', clientName: 'Procter & Gamble', status: 'Pending', createdBy: 'emma@example.com', creationDate: '2023-11-20' },
               { id: 14, name: 'Pepsi Max Taste Challenge', clientName: 'PepsiCo', status: 'Expired', createdBy: 'frank@example.com', creationDate: '2023-02-01' },
               { id: 15, name: 'PlayStation Plus Discount', clientName: 'Sony', status: 'Active', createdBy: 'grace@example.com', creationDate: '2023-06-15' },
-              { id: 16, name: 'Solar Roof Installation Promo', clientName: 'Tesla', status: 'Pending', createdBy: 'henry@example.com', creationDate: '2023-09-05' }
+              { id: 16, name: 'Solar Roof Installation Promo', clientName: 'SunRun', status: 'Pending', createdBy: 'henry@example.com', creationDate: '2023-09-05' }
             ].map((offer) => (
               <div key={offer.id} className="bg-white rounded-lg shadow-sm overflow-hidden transition duration-300 ease-in-out hover:shadow-md">
                 <div className="p-6">

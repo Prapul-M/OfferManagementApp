@@ -26,7 +26,7 @@ async function updateDataExtension(offerData) {
     const accessToken = await getAccessToken();
     console.log('Access token obtained');
 
-    const endpoint = `https://${SUBDOMAIN}.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:9436C8BD-3758-4626-9CC7-D9AD4F710B4A/rows`;
+    const endpoint = `https://${SUBDOMAIN}.rest.marketingcloudapis.com/data/v1/async/dataextensions/key:4DE0F2A1-A67A-441F-BB12-2EDBA7D9C75F/rows`;
     console.log('Sending request to:', endpoint);
 
     const response = await axios.post(endpoint, {
