@@ -5,6 +5,7 @@ const connectDB = require('./config/db');
 const offerRoutes = require('./routes/offerRoutes');
 const mongoose = require('mongoose');
 const { updateDataExtension } = require('./utils/salesforceIntegration');
+const path = require('path');
 
 // Add this line before connecting to MongoDB
 mongoose.set('strictQuery', false);
@@ -26,6 +27,15 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/offers', offerRoutes);
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/public')));
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
