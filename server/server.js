@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./config/db');
 const offerRoutes = require('./routes/offerRoutes');
 const mongoose = require('mongoose');
 const { updateDataExtension } = require('./utils/salesforceIntegration');
@@ -13,7 +12,7 @@ mongoose.set('strictQuery', false);
 const app = express();
 
 // Connect to database
-connectDB();
+
 
 // Middleware
 app.use(cors());
