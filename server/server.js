@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 app.use('/api/offers', offerRoutes);
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
 // Serve static files from the images directory
 app.use('/images', express.static(path.join(__dirname, '../client/src/images')));
@@ -36,7 +36,7 @@ app.use('/images', express.static(path.join(__dirname, '../client/src/images')))
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
 // Error handling middleware
