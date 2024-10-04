@@ -12,6 +12,8 @@ import ProcterGambleLogo from '../images/ProcterGamble.png';
 import PepsiCoLogo from '../images/PepsiCo.png';
 import SonyLogo from '../images/Sony.png';
 import SunRunLogo from '../images/SunRun.png';
+import TeslaLogo from '../images/Tesla.png';
+import SamsungLogo from '../images/Samsung.png';
 // Import other logos as needed
 
 const logoMap = {
@@ -29,6 +31,8 @@ const logoMap = {
   'PepsiCo': PepsiCoLogo,
   'Sony': SonyLogo,
   'SunRun': SunRunLogo,
+  'Tesla': TeslaLogo,
+  'Samsung': SamsungLogo,
   // Add other client names and their corresponding logos
 };
 

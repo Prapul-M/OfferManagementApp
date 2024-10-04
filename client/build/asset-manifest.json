@@ -1,10 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.d3ba03ca.css",
-    "main.js": "/static/js/main.6f6bfee2.js",
+    "main.js": "/static/js/main.7b743def.js",
     "static/js/453.d995124c.chunk.js": "/static/js/453.d995124c.chunk.js",
     "static/media/Toyota.png": "/static/media/Toyota.c048297136cf701931ed.png",
     "static/media/Sony.png": "/static/media/Sony.31742fd6e000589e0a7a.png",
+    "static/media/Tesla.png": "/static/media/Tesla.af5f50f49b0c6a02eda5.png",
+    "static/media/Samsung.png": "/static/media/Samsung.2cf01a6e63a7f4a22012.png",
     "static/media/JohnsonJohnson.png": "/static/media/JohnsonJohnson.7f083df84deb3d464728.png",
     "static/media/Cocacola.png": "/static/media/Cocacola.fe900ddded9c18c9967e.png",
     "static/media/PepsiCo.png": "/static/media/PepsiCo.1f9018c4b01e668a75bc.png",
@@ -13,11 +15,11 @@
     "static/media/Google.png": "/static/media/Google.20ace8cbcfbe8d29e8d0.png",
     "index.html": "/index.html",
     "main.d3ba03ca.css.map": "/static/css/main.d3ba03ca.css.map",
-    "main.6f6bfee2.js.map": "/static/js/main.6f6bfee2.js.map",
+    "main.7b743def.js.map": "/static/js/main.7b743def.js.map",
     "453.d995124c.chunk.js.map": "/static/js/453.d995124c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d3ba03ca.css",
-    "static/js/main.6f6bfee2.js"
+    "static/js/main.7b743def.js"
   ]
 }
